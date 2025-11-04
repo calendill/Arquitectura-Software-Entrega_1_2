@@ -4,6 +4,8 @@ ________________________________________
 Builder Pattern
 El Builder Pattern permite construir objetos complejos de manera gradual, sin necesidad de crear múltiples constructores con muchos parámetros. Este patrón ofrece varias ventajas: evita constructores largos y difíciles de leer, permite asignar únicamente los campos necesarios y facilita la creación de objetos inmutables o semi-inmutables. En el proyecto se utiliza Lombok con la anotación @Builder.
 Ejemplo en ClienteDto:
+
+
 ClienteDto dto = ClienteDto.builder()
         .cedula(cliente.getCedula())
         .nombre(cliente.getNombre())
@@ -13,6 +15,8 @@ ClienteDto dto = ClienteDto.builder()
         .correo(cliente.getCorreo())
         .direccion(cliente.getDireccion())
         .build();
+
+        
 Ventajas prácticas: - Permite crear DTOs y entidades de manera clara en convertirADto y convertirAEntidad. - Facilita agregar nuevos campos sin romper constructores existentes.
 ________________________________________
 Factory Method Pattern
