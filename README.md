@@ -22,6 +22,8 @@ ________________________________________
 Factory Method Pattern
 El Factory Method Pattern permite crear objetos sin exponer la lógica de construcción al cliente. En el proyecto, MascotaFactory decide si crear un objeto Perro o Gato según los datos del DTO.
 Ejemplo:
+
+
 public static Mascota crearDesdeDto(MascotaDto dto, Cliente cliente) {
     if ("PERRO".equalsIgnoreCase(dto.getTipoAnimal())) {
         return new Perro(...);
@@ -31,19 +33,25 @@ public static Mascota crearDesdeDto(MascotaDto dto, Cliente cliente) {
         throw new IllegalArgumentException("Tipo de mascota desconocido: " + dto.getTipoAnimal());
     }
 }
+
+
+
 Ventajas: - Encapsula la creación de objetos complejos. - Facilita la extensión a nuevos tipos de mascotas. - Centraliza cambios en la lógica de construcción.
 Ejemplo de uso:
 Mascota mascota = MascotaFactory.crearDesdeDto(dto, cliente);
 mascotaDao.guardar(mascota);
 ________________________________________
+
 Repository Pattern
 El Repository Pattern actúa como capa de abstracción entre la lógica de negocio y la base de datos, proporcionando métodos CRUD y ocultando los detalles de persistencia.
+
 Ejemplo en ClienteDaoJpaImpl:
 •	GuardarCliente → Inserta un cliente.
 •	obtenerTodos → Lista todos los clientes.
 •	obtenerPorId → Busca por cédula.
 •	actualizar → Modifica cliente.
 •	eliminarCliente → Borra cliente.
+
 Ventajas: - Separación de responsabilidades. - Facilita pruebas unitarias. - Permite cambiar la implementación de la persistencia sin afectar los servicios.
 Uso en el servicio:
 List<ClienteDto> clientes = clienteServicio.obtenerTodos();
